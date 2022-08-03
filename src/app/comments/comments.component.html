@@ -1,0 +1,13 @@
+<ng-container *ngIf="(commentService.comments$ | async) as comments;else loading">
+    <ng-container *ngIf=" comments && comments.length > 0;else apiError">
+        <h1>Comments</h1>
+       <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+    </ng-container>
+    <ng-template #apiError>
+        <h1>Couldn't load comments at moment.</h1>
+    </ng-template>
+
+</ng-container>
+<ng-template #loading>
+   <h1> Loading Comments</h1>
+</ng-template>

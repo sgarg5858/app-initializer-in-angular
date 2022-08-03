@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+#intialContainer{
+    width: 100vw;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#intialView{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 150px;
+}
+.loading
+{
+    border:4px dotted goldenrod;
+    color: goldenrod;
+    background-color: lightyellow;
+}
+
+.error
+{
+    border:4px dotted maroon;
+    color: maroon;
+    background-color: lightcoral;
+}

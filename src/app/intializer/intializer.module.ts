@@ -17,12 +17,22 @@ import { take } from 'rxjs';
       // useFactory takes input function and executes it
       // and APP_INITIALIZER also needs a function. so 
       //we return a function from factory function
+     
       useFactory : (configService:ConfigService) =>{
+
         return () =>{
+
           configService.fetchEndPoints();
+          //We have to return observable
+          //if we dont return it angular will not wait for observable to complete
+          //and if this observable throws error,then that error is caught in
+          // main.ts file.
           return configService.baseUrl$.pipe(take(1));
+
         }
-      },deps:[ConfigService]
+
+      }
+      ,deps:[ConfigService]
     },
   ]
 })

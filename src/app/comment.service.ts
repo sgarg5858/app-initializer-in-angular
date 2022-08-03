@@ -17,15 +17,19 @@ export interface Comment{
 export class CommentService {
 
   baseUrl:string="";
+
   constructor(private httpClient:HttpClient,private configService:ConfigService) {
     //get base url
+
     this.configService.baseUrl$.pipe(take(1)).subscribe((baseUrl:string|undefined)=>{
       if(baseUrl!=undefined)
       {
         this.baseUrl=baseUrl;
       }
     })
+
    }
+
    private commentsSubject = new BehaviorSubject<Comment[]|null>(null);
    public readonly comments$ = this.commentsSubject.asObservable();
 

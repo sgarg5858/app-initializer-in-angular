@@ -14,10 +14,13 @@ export class ConfigService {
   constructor(private httpClient:HttpClient) { }
 
   private baseUrlBehaviorSubject= new BehaviorSubject<Config|null>(null);
+
+  //Exposed Observable
   public readonly baseUrl$ = this.baseUrlBehaviorSubject.asObservable().pipe(
     filter((config:Config|null)=> config!==null),
     map((config:Config|null)=>config?.baseUrl)
   );
+
 
   fetchEndPoints()
   {
@@ -30,7 +33,7 @@ export class ConfigService {
       error:(error)=>{
         //fallback url or add some error property
         // this.baseUrlBehaviorSubject.next({baseUrl:""})
-        this.baseUrlBehaviorSubject.error("Can't reach the servers")
+        this.baseUrlBehaviorSubject.error("Can't reach the servers");
       }
     })
   }

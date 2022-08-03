@@ -21,7 +21,7 @@ export class ConfigService {
 
   fetchEndPoints()
   {
-    return this.httpClient.get<Config>('../../assets/config1.json')
+    return this.httpClient.get<Config>('../../assets/config.json')
     .subscribe({
       next: (config:Config)=>{
         console.log(config);
